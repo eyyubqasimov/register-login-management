@@ -32,7 +32,10 @@
 <br>
 <div class="container">
 	<h1>Employee management system</h1>
-	<p th:if="${#request.isUserInRole('ROLE_ADMIN')}">Welcome admin</p>
+	<p th:if="${#request.isUserInRole('ROLE_ADMIN')}">
+		Welcome admin
+		<button type="button" class="btn btn-primary" onclick="window.location.href='/user_management.html'">User management</button>
+	</p>
 	<p th:unless="${#request.isUserInRole('ROLE_ADMIN')}">Welcome <span sec:authentication="principal.username">User</span></p>
 </div>
 </body>
