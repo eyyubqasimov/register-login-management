@@ -4,6 +4,7 @@ package com.gasimov.register_login.web;
 import com.gasimov.register_login.model.User;
 import com.gasimov.register_login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class UserManagementController {
         return "user_management";
     }
 
-    @PostMapping("/delete/{email}/{roleName}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ExceptionHandler(Exception.class)
     public String deleteUserRole(@PathVariable("email") String email, @PathVariable("roleName") String roleName) {
         try {
