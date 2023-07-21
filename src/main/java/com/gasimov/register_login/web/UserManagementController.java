@@ -21,12 +21,18 @@ public class UserManagementController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public String viewUserManagementPage(Model model) {
-        List<User> allUsers = userService.getAllUsers();
-        model.addAttribute("users", allUsers);
-        return "user_management";
-    }
+//    @GetMapping
+//    public String viewUserManagementPage(Model model) {
+//        List<User> allUsers = userService.getAllUsers();
+//        model.addAttribute("users", allUsers);
+//        return "user_management";
+//    }
+@GetMapping("/user-management")
+public String userManagement(Model model) {
+    List<User> allUsers = userService.getAllUsers();
+    model.addAttribute("user", allUsers);
+    return "user_management";
+}
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ExceptionHandler(Exception.class)
