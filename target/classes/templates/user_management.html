@@ -1,23 +1,28 @@
 <h1>User Management</h1>
 
 <table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Role</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-  <tbody>
-  <#list users as user>
-  <tr>
-    <td>${user.name}</td>
-    <td>${user.email}</td>
-    <td>${user.role}</td>
-    <td>
-      <a href="/delete/${user.email}/${user.roleName}">Delete</a>
-    </td>
-  </tr>
-  </tbody>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+    </thead>
+    <tbody>
+<!--    <#list users as user>-->
+
+    <tr th:each="user : ${users}">
+        <td style=" padding-left: 15px " th:text="${user.firstName}"></td>
+        <td style=" padding-left: 15px " th:text="${user.lastName}"></td>
+        <td style="text-align: center; padding-left: 15px " th:text="${user.email}"></td>
+        <td style="text-align: center; padding-left: 15px " th:each="role :${user.getRoles()}">
+            <span th:text="${role.getName().toString()}"></span>
+        </td>
+
+        <!--        <td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Update</a>-->
+<!--            <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a>-->
+<!--        </td>-->
+    </tr>
+    </tbody>
 </table>

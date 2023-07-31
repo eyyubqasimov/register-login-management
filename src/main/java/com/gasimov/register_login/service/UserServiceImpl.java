@@ -67,6 +67,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<Role> getAllRoles() {
+        return null;
+    }
+
+    @Override
     public void deleteUserRole(String userEmail, String roleName) {
         User user = userRepository.findByEmail(userEmail);
         if (user != null) {
@@ -80,6 +85,11 @@ public class UserServiceImpl implements UserService {
                 userRepository.save(user);
             }
         }
+    }
+
+    @Override
+    public List<User> findAll() {
+        return null;
     }
 
     private List<Role> getRolesForRegistration(String email) {

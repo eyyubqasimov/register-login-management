@@ -24,7 +24,7 @@ public class UserRegistrationController {
         return new UserRegistrationDto();
     }
 
-    @GetMapping
+    @GetMapping()
     public String showRegistrationForm() {
         return "registration";
     }
@@ -33,5 +33,6 @@ public class UserRegistrationController {
     public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) {
         userService.save(registrationDto);
         return "redirect:/registration?success";
+        
     }
 }
