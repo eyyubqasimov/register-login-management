@@ -6,25 +6,24 @@
           crossorigin="anonymous">
     <h1>User Management</h1>
     <table border="1" class = "table table-striped table-responsive-md">
-    <thead>
-    <tr>
-        <th style="text-align: left">Name</th>
-        <th style="text-align: left">Last Name</th>
-        <th style="text-align: center">Email</th>
-        <th style="text-align: left">Role</th>
-    </tr>
-    </thead>
-    <tbody>
+        <thead>
+        <tr>
+            <th style="text-align: left">Name</th>
+            <th style="text-align: left">Last Name</th>
+            <th style="text-align: center">Email</th>
+            <th style="text-align: center">Role</th>
+        </tr>
+        </thead>
+        <tbody>
 
-    <tr th:each="user : ${users}">
-        <td style=" padding-left: 15px " th:text="${user.firstName}"></td>
-        <td style=" padding-left: 15px " th:text="${user.lastName}"></td>
-        <td style="text-align: center; padding-left: 15px " th:text="${user.email}"></td>
-        <td style=" padding-left: 15px " th:each="role :${user.getRoles()}">
-            <span th:text="${role.getName().toString()}"></span>
-        </td>
-
-    </tr>
-    </tbody>
-</table>
-    </div>
+        <tr th:each="user : ${users}">
+            <td style=" padding-left: 15px " th:text="${user.firstName}"></td>
+            <td style=" padding-left: 15px " th:text="${user.lastName}"></td>
+            <td style="text-align: center; padding-left: 15px " th:text="${user.email}"></td>
+            <td style=" padding-left: 15px " th:each="role :${user.getRoles()}">
+                <span th:text="${role.getName().toString()}"></span></td>
+            <td> <a th:href="@{/deleteEmployee/{id}(id=${user.id})}" class="btn btn-danger" style="text-align: center">Delete</a> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
