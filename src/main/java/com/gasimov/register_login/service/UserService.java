@@ -13,7 +13,10 @@ public interface UserService extends UserDetailsService{
 	List<Role> getAllRoles();
 
 
+
+
 	void deleteUserRole(String userEmail, String roleName);
+	void deleteUser(long id);
 
 
 	List<User> findAll();

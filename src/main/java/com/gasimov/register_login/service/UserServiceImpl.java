@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -84,6 +85,14 @@ public class UserServiceImpl implements UserService {
                 user.deleteRole(roleToDelete);
                 userRepository.save(user);
             }
+        }
+    }
+
+    @Override
+    public void deleteUser(long id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user != null) {
+            userRepository.deleteById((id));
         }
     }
 

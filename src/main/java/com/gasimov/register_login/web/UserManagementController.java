@@ -18,12 +18,21 @@ public class UserManagementController {
         this.userService = userService;
     }
 
-@GetMapping("/user-management")
-public String userManagement(Model model) {
-    List<User> allUsers = userService.getAllUsers();
-    model.addAttribute("users", allUsers);
-    return "user_management";
-}
+    @GetMapping("/deleteUser/{id}")
+    public String deleteUser(Model model,@PathVariable Long id) {
+        userService.deleteUser(id);
+        List<User> allUsers = userService.getAllUsers();
+        model.addAttribute("users", allUsers);
+        return "user_management";
+    }
+
+
+    @GetMapping("/user-management")
+    public String userManagement(Model model) {
+        List<User> allUsers = userService.getAllUsers();
+        model.addAttribute("users", allUsers);
+        return "user_management";
+    }
 
     public List<User> getUsers() {
         List<User> users = userService.findAll();
